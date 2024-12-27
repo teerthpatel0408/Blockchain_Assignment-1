@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blockchain</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Including CryptoJS for SHA-256 hashing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <!-- Including Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Blockchain</h1>
+    </header>
+    
+    <div class="container">
+        <div class="transaction-input">
+            <input type="text" id="sender" placeholder="Sender">
+            <input type="text" id="receiver" placeholder="Receiver">
+            <input type="number" id="amount" placeholder="Amount">
+        </div>
+        <div class="actions">
+            <button onclick="addTransaction()">Add Transaction</button>
+            <button onclick="mineBlock()">Mine Block</button>
+            <button onclick="validateChain()">Validate Chain</button>
+        </div>
+        <div id="message"></div>
+        <div class="blockchain-container">
+            <div class="blockchain" id="blockchain">
+                <!-- Blocks and triangles will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="users-info">
+        <div class="user-box">
+            <h2>User A</h2>
+            <!-- <p>Public Key: <span id="user-a-public-key"></span></p> -->
+            <p>Wallet Amount: <span id="user-a-wallet-amount"></span></p>
+        </div>
+        <div class="user-box">
+            <h2>User B</h2>
+            <!-- <p>Public Key: <span id="user-b-public-key"></span></p> -->
+            <p>Wallet Amount: <span id="user-b-wallet-amount"></span></p>
+        </div>
+        <div class="user-box">
+            <h2>User C</h2>
+            <!-- <p>Public Key: <span id="user-c-public-key"></span></p> -->
+            <p>Wallet Amount: <span id="user-c-wallet-amount"></span></p>
+        </div>
+    </div>
+
+    <div class="pending-transactions">
+        <h2>Pending Transactions:</h2>
+        <ul id="pending-transactions-list"></ul>
+    </div>
+
+
+    <footer>
+        Group NUmber 1
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="blockModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Block Details</h2>
+            <ul>
+                <li><strong>Block Number:</strong> <span id="modalIndex"></span></li>
+                <li><strong>Timestamp:</strong> <span id="modalTimestamp"></span></li>
+                <li><strong>Previous Hash:</strong> <i id="modalPrevHash"></i></li>
+                <li><strong>Hash:</strong>
+                    <input type="text" id="modalHash" class="editable-hash">
+                    <button class="save-hash" onclick="saveHash()">Save</button>
+                </li>
+                <li><strong>Nonce:</strong> <span id="modalNonce"></span></li>
+                <li><strong>Transactions:</strong></li>
+                <ul id="modalTransactions"></ul>
+            </ul>
+        </div>
+    </div>
+
+    <script src = "index.js">
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,353 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #FFFFFF;
+    /* Neutral white background */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Header Styling */
+header {
+    background-color: #003366;
+    /* Dark Blue */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 2em;
+    letter-spacing: 1px;
+}
+
+/* Container for Content */
+.container {
+    flex: 1;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Transaction Input Section */
+.transaction-input {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.transaction-input input {
+    padding: 15px;
+    font-size: 16px;
+    border: 2px solid #006400;
+    /* Dark Green */
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 200px;
+    /* Fixed width */
+    margin: 10px;
+}
+
+.transaction-input input:focus {
+    border-color: #FFD700;
+    /* Yellow */
+}
+
+/* Action Buttons */
+.actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.actions button {
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    min-width: 150px;
+}
+
+.actions button:nth-child(1) {
+    background-color: #8B0000;
+    /* Dark Red */
+    color: white;
+}
+
+.actions button:nth-child(1):hover {
+    background-color: #700000;
+    /* Darker Red */
+}
+
+.actions button:nth-child(2) {
+    background-color: #006400;
+    /* Dark Green */
+    color: white;
+}
+
+.actions button:nth-child(2):hover {
+    background-color: #004d00;
+    /* Darker Green */
+}
+
+.actions button:nth-child(3) {
+    background-color: #FFD700;
+    /* Yellow */
+    color: black;
+}
+
+.actions button:nth-child(3):hover {
+    background-color: #FFC300;
+    /* Darker Yellow */
+}
+
+/* Message Display */
+#message {
+    margin-bottom: 20px;
+    min-height: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Blockchain Visualization */
+.blockchain-container {
+    overflow-x: auto;
+    padding-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: relative;
+}
+
+.blockchain {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Adjusted gap to fit arrows */
+    position: relative;
+    padding: 20px 0;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.block {
+    background: #FFFFFF;
+    /* White */
+    border: 2px solid #003366;
+    /* Dark Blue */
+    border-radius: 10px;
+    padding: 20px;
+    width: 150px;
+    height: 150px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #003366;
+    /* Dark Blue */
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.block:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Triangle as Arrow */
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid #006400;
+    /* Dark Green */
+    transform: rotate(270deg);
+    margin-left: -10px;
+    /* Adjust spacing */
+}
+
+/* Popup Modal Styling */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 2000;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black w/ opacity */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #003366;
+    /* Dark Blue */
+    border-radius: 10px;
+    width: 80%;
+    max-width: 700px;
+    position: relative;
+    animation: fadeIn 0.5s;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.modal-content p {
+    margin-bottom: 10px;
+}
+
+.modal-content i {
+    font-style: italic;
+    color: #006400;
+    /* Dark Green */
+}
+
+.modal-content ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.modal-content ul li {
+    margin-bottom: 10px;
+    list-style: disc;
+}
+
+.modal-content .editable-hash {
+    width: 100%;
+    padding: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.modal-content .save-hash {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #8B0000;
+    /* Dark Red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-content .save-hash:hover {
+    background-color: #700000;
+    /* Darker Red */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #002D62;
+    /* Dark Blue */
+    color: white;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    bottom: 0;
+    z-index: 1000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .block {
+        width: 120px;
+        height: 120px;
+        font-size: 1em;
+    }
+}
+
+.users-info {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.user-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.pending-transactions {
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.pending-transactions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pending-transactions li {
+    margin-bottom: 10px;
+}
